@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sedum Sustainable Design Solutions</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #E6E8E6;
+    color: #2F2621;
+}
+
+/* --- LAYOUT --- */
+
+.container {
+    display: flex;
+}
+
+/* --- SIDEBAR --- */
+
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    padding: 40px 10px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-right: 2px solid rgba(0,0,0,0.08);
+    background: rgba(255,255,255,0.5);
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.05;
+}
+
+.logo span {
+    font-weight: 300;
+    font-size: 16px;
+    display: block;
+}
+
+.logo .logo2{
+    font-size: 25px;
+    font-weight: 400;
+    
+    display: block;
+}
+
+/* --- NAV --- */
+
+.nav {
+    margin-top: 40px;
+}
+
+.nav a {
+    display: block;
+    text-decoration: none;
+    color: #2F2621;
+    margin-bottom: 12px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.nav a:hover {
+    transform: translateX(5px);
+    color: #6E7A4F;
+}
+
+/* --- MAIN --- */
+
+.main {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+}
+
+/* --- HERO --- */
+.hero {
+    position: relative;
+    height: 75vh;
+    overflow: hidden;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    filter:
+        contrast(1.05)
+        brightness(0.92)
+        saturate(0.85)
+        sepia(0.08);
+
+    transform: scale(1.03);
+}
+
+/* gradient overlay for cohesion */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+/* HERO TEXT */
+.hero-text {
+    position: absolute;
+    bottom: 60px;
+    left: 40px;
+
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(10px);
+
+    padding: 10px;
+    max-width: 90%;
+
+    font-size: 16px;
+    line-height: 1.5;
+
+    border-left: 4px solid #6E7A4F;
+    border-radius: 5px;
+}
+
+/* --- SECTIONS --- */
+
+.section {
+    padding: 40px 40px;
+}
+
+/* --- ABOUT --- */
+
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about img {
+    width: 100%;
+    border-radius: 6px;
+    transform: rotate(-0.5deg);
+}
+
+.section h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* --- SERVICES --- */
+
+.services h2 {
+    margin-bottom: 40px;
+}
+
+/* GRID */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* CARD */
+.service-card {
+    background: rgba(255,255,255,0.5);
+    padding: 20px;
+    border-radius: 6px;
+
+    transition: 0.25s ease;
+}
+
+/* IMAGE */
+.service-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 15px;
+
+    filter:
+        contrast(1.05)
+        brightness(0.95)
+        saturate(0.85)
+        sepia(0.08);
+}
+
+/* TEXT */
+.service-card h3 {
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* HOVER */
+.service-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255,255,255,0.75);
+}
+
+/* SURVEY SECTION */
+.survey {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* BOX */
+.survey-box {
+    text-align: center;
+    max-width: 100%;
+
+    background: rgba(255,255,255,0.6);
+    padding: 40px;
+    border-radius: 6px;
+
+    border-left: 4px solid #6E7A4F;
+}
+
+/* TEXT */
+.survey-box p {
+    margin: 20px 0;
+    line-height: 1.6;
+}
+
+/* BUTTON */
+.survey-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #5A4636;
+    color: white;
+    text-decoration: none;
+
+    transition: 0.25s ease;
+}
+
+.survey-button:hover {
+    background: #6E7A4F;
+    transform: translateY(-2px);
+}
+
+.survey-box {
+    transition: 0.3s ease;
+}
+
+.survey-box:hover {
+    transform: translateY(-3px);
+}
+/* --- CONTACT --- */
+
+.contact {
+    margin-top: 60px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+input, textarea {
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.2);
+    background: transparent;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    background: #5A4636;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #6E7A4F;
+}
+
+/* --- MOBILE --- */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .hero {
+        height: 60vh;
+    }
+
+    .hero-text {
+        position: static;
+        margin-top: 20px;
+    }
+    
+
+    .about, .services {
+        grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+    grid-template-columns: 1fr;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="logo">
+        SEDUM
+        <span>Sustainable Design</span>
+        <span class="logo2">SOLUTIONS</span>
+    </div>
+
+    <div class="nav">
+        <a href="#hero">Mission Statement</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact Us</a>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- HERO -->
+    <section id="hero" class="hero">
+    <img src="sedum_images/hero_image.JPG" alt="">
+    <div class="hero-text">
+        Housing is a fundamental human right. Sustainability is a fundamental human responsibility. Unfortunately, with the current cost of housing, red tape labyrinth of permitting, and lack of accessible education, building a <i>life-focused</i> home seems impossible. Our mission is to reduce those barriers and to provide stability and guidance through the winding road to a better future.
+    </div>
+</section>
+
+    <!-- ABOUT -->
+    <section id = "about"class="section about">
+        <img src="sedum_images/jad_n_patty.jpg" alt="">
+        <div>
+            <h2>About Us</h2>
+
+            <p>
+                Meet Jad and Patty! We came to Nova Scotia for university in 2018, 
+                and fell in love with this beautiful province. We have a long history of building, 
+                from systems to saloons. We feel that the cross section of our expertise in engineering 
+                and management, as well as our extensive joint experience in restorative forestry, 
+                allows us to bring a fresh perspective to inspiring and innovative projects. 
+            </p>
+
+
+            <br>
+
+            <p>
+                <strong>Patrick (he/him)</strong> holds a bachelor’s degree in electrical engineering, 
+                with a focus on robotics and power distribution. He has spent several years developing 
+                a wide knowledge base for designing and building just about anything. He can often be 
+                found biking around town, or surfing at (REDACTED).
+            </p>
+            <br>
+            <p>
+                <strong>Jad (he/him)</strong> holds a bachelor’s degree in entrepreneurial management, 
+                and has spent several years honing his skills in the roles of operations management and 
+                event coordination. He is a true handyman, and can be located if you follow the sound of 
+                puttering and handtools. 
+            </p>
+
+            <br>
+
+            <p>
+                Both are often found spinning wildly on local dance floors.
+            </p>
+        </div>
+    </section>
+
+<section id = "services"class="section services">
+
+    <h2>Services</h2>
+
+    <p >
+        Welcome to your one-stop shop for all of your project needs. We are here to help you navigate the maze of permitting, 
+        locating and sourcing materials and land, and designing and building your life-focused future. From small weekend projects
+        to large scale renovations and builds, you can trust us and our team of experts to findyou a sustainable solution, without breaking the bank.
+    </p>
+    <br>
+    <br>
+    
+
+
+    <div class="services-grid">
+
+        <div class="service-card">
+            <h3>Building</h3>
+            <p>
+                Affordable project based design and development.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <h3>Renovating</h3>
+            <p>
+                Bespoke restoration and home improvement.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <h3>Guidance</h3>
+            <p>
+                Permitting and design consultation.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <h3>Landscaping</h3>
+            <p>
+                Design and implementation of sustainable landscape solutions.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <h3>Community</h3>
+            <p>
+                Connecting homeowners to resources and local experts.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section survey">
+
+    <div class="survey-box">
+        <h2>Survey</h2>
+
+        <p>
+            Do you currently live off-grid or sustainably?<br>
+            Please take a few minutes to complete our short survey.
+        </p>
+
+        <a href="https://patrickmackay.ca/notion-form" target="_blank" class="survey-button">
+            Take the Survey
+        </a>
+    </div>
+
+</section>
+
+<section id="contact" class="section">
+        <h2>Send us a message!</h2>
+
+        <form action="https://formsubmit.co/patrick.mackay@icloud.com" method="POST">
+            <input type="hidden" name="_subject" value="New message from sedum solutions">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://patrickmackay.ca">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+</div>
+</div>
+
+</body>
+</html>
