@@ -77,6 +77,28 @@ body {
     transform: translateX(5px);
     color: #6E7A4F;
 }
+.navbar {
+    background-color: rgba(255,255,255,0.5);
+    border-bottom: 1px solid #ddd;
+    padding: 5px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: none  ;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    display: none;
+}
+
+nav a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #333;
+}
 
 /* --- MAIN --- */
 
@@ -289,47 +311,109 @@ button {
 button:hover {
     background: #6E7A4F;
 }
-
-/* --- MOBILE --- */
+/* HAMBURGER (hidden on desktop) */
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    margin-top: 20px;
+}
 
 @media (max-width: 900px) {
 
+    /* Hide sidebar container visually */
+    html{
+        scroll-padding-top: 80px;
+    }
     .sidebar {
-        position: relative;
+        position: absolute;
         width: 100%;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
+        height: 0;
+        overflow: visible;
+        border: none;
+        background: none;
+        padding: 0;
+        display:none;
+    }
+    .navbar {
+        display: block;
+    }
+    .navbar .container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
     }
 
+    /* Hide nav completely */
+    .nav {
+        display: none;
+    }
+
+
+    /* Fix main layout */
     .main {
         margin-left: 0;
         width: 100%;
     }
 
+    /* HERO TEXT BELOW IMAGE */
     .hero {
-        height: 60vh;
+        height: auto;
     }
 
     .hero-text {
         position: static;
-        margin-top: 20px;
+        margin: 20px;
+    }
+    .about {
+        display:grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+}
+    .about h2{
+        order: 1;
+    }
+    .about img{
+        order: 1;
+    }
+    /* GRID */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 30px;
     }
     
-
-    .about, .services {
-        grid-template-columns: 1fr;
-    }
-
-    .services-grid {
-    grid-template-columns: 1fr;
-}
-
 }
 </style>
 </head>
 
+<script>
+function toggleMenu() {
+    const nav = document.querySelector('.nav');
+    nav.classList.toggle('active');
+}
+</script>
+
 <body>
+    <header class="navbar">
+    <div class="container">
+        <!-- Logo on the left -->
+
+        <div class="logo">
+            SEDUM
+            <span>Sustainable Design</span>
+            <span class="logo2">SOLUTIONS</span>
+        </div>
+
+        <!-- Navigation links -->
+        <nav>
+            <a href="#hero">Mission</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
 
 <div class="container">
 
@@ -349,6 +433,7 @@ button:hover {
     </div>
 </div>
 
+
 <!-- MAIN -->
 <div class="main">
 
@@ -367,7 +452,7 @@ button:hover {
             <h2>About Us</h2>
 
             <p>
-                Meet Jad and Patty! We came to Nova Scotia for university in 2018, 
+                Hello, we're Jad and Patty! We came to Nova Scotia for university in 2018, 
                 and fell in love with this beautiful province. We have a long history of building, 
                 from systems to saloons. We feel that the cross section of our expertise in engineering 
                 and management, as well as our extensive joint experience in restorative forestry, 
@@ -476,7 +561,7 @@ button:hover {
         <form action="https://formsubmit.co/patrick.mackay@icloud.com" method="POST">
             <input type="hidden" name="_subject" value="New message from sedum solutions">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://patrickmackay.ca">
+            <input type="hidden" name="_next" value="https://sedumsolutions.ca">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" required>
             <textarea name="message" placeholder="Your Message" required></textarea>
