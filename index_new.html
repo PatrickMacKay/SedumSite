@@ -172,40 +172,29 @@ nav a {
 
 .about-person {
     display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
     align-items: center;
     margin-bottom: 60px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 10px;
-    padding: 25px;
-    background:rgba(255,255,255,0.25);
 }
 
+.about-person:nth-child(odd) {
+    direction: ltr;
+}
 
-.about-person p {
-    max-width: 500px;
-    line-height: 1.6;
+.about-person:nth-child(even) {
+    direction: rtl;
 }
-.about-person img{
-    justify-self: start ;
+
+.about-person:nth-child(even) > div {
+    direction: ltr;
 }
-.about-person div{
-    justify-self: start;
-}
-.about-person:hover {
-    background: rgba(255,255,255,0.4);
-    transform: translateY(-2px);
-    transition: 0.25s ease;
-}
+
 .about img {
-    width: 100%;
+    width: 50%;
     max-width: 200px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 2px solid rgba(0,0,0,0.15);
-    display: block;
+    border-radius: 6px;
+    transform: rotate(-0.5deg);
 }
 
 .section h2 {
@@ -505,7 +494,7 @@ function toggleMenu() {
         </div>
 
         <div class="about-person">
-            <img src="sedum_images/jad_pic.JPEG" alt="Jad">
+            <img src="sedum_images/jad_pic.JPG" alt="Jad">
             <div>
                 <p>
                     <strong>Jad (he/him)</strong> holds a bachelor's degree in entrepreneurial management, 
@@ -528,6 +517,11 @@ function toggleMenu() {
             </div>
         </div>
 
+        <div class="about-intro">
+            <p>
+                Both are often found spinning wildly on local dance floors.
+            </p>
+        </div>
     </section>
 
 <section id = "services" class="section services">
@@ -616,6 +610,7 @@ function toggleMenu() {
     </section>
 
 <section class="section banner-section">
+    <h2 style="margin-bottom: 30px;">Meet Jad & Patty</h2>
     <img src="sedum_images/jadnpatty_banner.JPG" alt="Jad and Patty Banner">
 </section>
 
