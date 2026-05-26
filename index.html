@@ -266,6 +266,76 @@ nav a {
     background: rgba(255,255,255,0.75);
 }
 
+:root {
+    --border: rgba(0,0,0,0.12);
+    --muted: #666;
+}
+
+/* RECENT PROJECTS */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 20px;
+}
+
+.proj-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 0.9rem;
+    background: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.proj-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+
+.proj-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.proj-content {
+    padding: 0.8rem;
+}
+
+.proj-content strong {
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.proj-content p {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* FADE */
+.fade {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+.fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+    .projects {
+        grid-template-columns: 1fr;
+    }
+}
+
+
 /* SURVEY SECTION */
 .survey {
     display: flex;
@@ -430,6 +500,10 @@ button:hover {
         grid-template-columns: repeat(1, 1fr);
         gap: 30px;
     }
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
     
 }
 </style>
@@ -530,6 +604,17 @@ function toggleMenu() {
                 </p>
             </div>
         </div>
+        
+                <div class="about-person">
+            <img src="sedum_images/nickshot.png" alt="Nick">
+            <div>
+                <p>
+                    <strong>Nick (he/him)</strong> holds a bachelor's degree in computer science (with a minor in bass guitar), and once sent a satellite to 
+                    space. Over the years he has earned a jack-of-all-trades reputation. He mans the groove department of Customer Service and Bill Ricky.
+                    He can often be found playing beautiful music for beautiful people.
+                </p>
+            </div>
+        </div>
 
     </section>
 
@@ -594,6 +679,55 @@ function toggleMenu() {
     </div>
 </section>
 
+<section class="section fade">
+    <h2>Some of our Recent Projects</h2>
+
+    <div class="projects">
+
+        <div class="proj-card">
+            <img src="sedum_images/nickatnight.JPEG" alt="Roof project">
+            <div class="proj-content">
+                <strong>Re-Shingling a Roof</strong>
+            </div>
+        </div>
+
+        <div class="proj-card">
+            <img src="sedum_images/back_deck.JPEG" alt="Back deck rebuild">
+            <div class="proj-content">
+                <strong>Back Steps Demo and Rebuild</strong>
+            </div>
+        </div>
+
+        <div class="proj-card">
+            <img src="sedum_images/front_deck.JPEG" alt="Front patio rebuild">
+            <div class="proj-content">
+                <strong>Front Patio Demo and Rebuild</strong>
+            </div>
+        </div>
+
+        <div class="proj-card">
+            <img src="sedum_images/finished_1.JPEG" alt="Dance floor">
+            <div class="proj-content">
+                <strong>Custom Dance Floor</strong>
+                <p>
+                    Precision-leveled flooring system built for durability and high traffic environments, with a focus on structural integrity.
+                </p>
+            </div>
+        </div>
+
+        <div class="proj-card">
+            <img src="sedum_images/heather1.jpg" alt="Kitchen and bar">
+            <div class="proj-content">
+                <strong>Saloon-Style Kitchen and Bar</strong>
+                <p>
+                    Custom-built interior featuring detailed joinery, integrated bar elements, and durable finishes designed for long-term use.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
 <section class="section survey">
 
     <div class="survey-box">
@@ -632,6 +766,30 @@ function toggleMenu() {
 
 </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const fades = document.querySelectorAll('.fade');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+
+        });
+    }, {
+        threshold: 0.15
+    });
+
+    fades.forEach(fade => {
+        observer.observe(fade);
+    });
+
+});
+</script>
 
 </body>
 </html>
