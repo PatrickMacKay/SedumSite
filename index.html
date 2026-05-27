@@ -515,7 +515,14 @@ function toggleMenu() {
     nav.classList.toggle('active');
 }
 </script>
-
+<script>
+function scrollToContact() {
+    document.getElementById("contact").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+</script>
 <body>
     <header class="navbar">
     <div class="container">
@@ -634,35 +641,35 @@ function toggleMenu() {
 
     <div class="services-grid">
 
-        <div class="service-card">
+        <div class="service-card" onclick="scrollToContact()">
             <h3>Building</h3>
             <p>
                 Affordable project based design and development.
             </p>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" onclick="scrollToContact()">
             <h3>Renovating</h3>
             <p>
                 Bespoke restoration and home improvement.
             </p>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" onclick="scrollToContact()">
             <h3>Guidance</h3>
             <p>
                 Permitting and design consultation.
             </p>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" onclick="scrollToContact()">
             <h3>Landscaping</h3>
             <p>
                 Design and implementation of sustainable landscape solutions.
             </p>
         </div>
 
-        <div class="service-card">
+        <div class="service-card" onclick="scrollToContact()">
             <h3>Community</h3>
             <p>
                 Connecting homeowners to resources and local experts.
@@ -670,7 +677,7 @@ function toggleMenu() {
         </div>
 
         
-        <div class="service-card">
+        <div class="service-card" onclick="scrollToContact()">
             <h3>And More!</h3>
             <p>
                 No problem too big, no job too small!
