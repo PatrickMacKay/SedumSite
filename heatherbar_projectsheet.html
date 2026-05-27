@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Project Summary | Sedum Solutions</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#E6E8E6;
+    color:#2F2621;
+    line-height:1.7;
+}
+
+/* BACK BUTTON */
+
+.back-button{
+    position:fixed;
+    top:25px;
+    left:25px;
+
+    z-index:1000;
+
+    background:rgba(255,255,255,0.65);
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(0,0,0,0.1);
+
+    padding:12px 18px;
+
+    border-radius:6px;
+
+    text-decoration:none;
+    color:#2F2621;
+
+    transition:0.25s ease;
+}
+
+.back-button:hover{
+    background:rgba(255,255,255,0.9);
+    transform:translateY(-2px);
+    color:#6E7A4F;
+}
+
+/* HERO */
+
+.hero{
+    position:relative;
+    height:75vh;
+    overflow:hidden;
+}
+
+.hero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    filter:
+        contrast(1.05)
+        brightness(0.92)
+        saturate(0.85)
+        sepia(0.08);
+
+    transform:scale(1.03);
+}
+
+.hero-text{
+    position:absolute;
+    bottom:50px;
+    left:50px;
+
+    background:rgba(255,255,255,0.55);
+    backdrop-filter:blur(10px);
+
+    padding:22px;
+
+    max-width:700px;
+
+    border-left:4px solid #6E7A4F;
+    border-radius:6px;
+}
+
+.hero-text h1{
+    margin-bottom:10px;
+    font-size:42px;
+    font-weight:600;
+}
+
+.hero-text p{
+    font-size:16px;
+}
+
+/* CONTENT */
+
+.section{
+    padding:60px 40px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.section h2{
+    margin-bottom:10px;
+    font-size:32px;
+    font-weight:600;
+}
+
+.section-desc{
+    color:#5f5a56;
+    max-width:700px;
+    margin-bottom:20px;
+}
+
+/* THUMB GRID (NEW STRUCTURE) */
+
+.thumb-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+    gap:12px;
+}
+
+.thumb-grid img{
+    width:100%;
+    height:400px;
+    object-fit:cover;
+
+    border-radius:6px;
+    border:1px solid rgba(0,0,0,0.12);
+
+    cursor:pointer;
+
+    transition:0.2s ease;
+
+    filter:
+        contrast(1.03)
+        brightness(0.97)
+        saturate(0.9)
+        sepia(0.05);
+}
+
+.thumb-grid img:hover{
+    transform:scale(1.02);
+    filter:brightness(1);
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,0.85);
+
+    z-index:9999;
+
+    justify-content:center;
+    align-items:center;
+}
+
+.modal img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:8px;
+}
+
+/* TIMELINE */
+
+.timeline{
+    margin-top:20px;
+}
+
+.timeline-item{
+    padding:25px 0;
+
+    border-bottom:1px solid rgba(0,0,0,0.08);
+}
+
+.timeline-item strong{
+    display:block;
+    margin-bottom:8px;
+    color:#6E7A4F;
+}
+
+/* FOOTER */
+
+.footer{
+    padding:60px 40px;
+    text-align:center;
+
+    color:#666;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .hero{
+        height:auto;
+    }
+
+    .hero-text{
+        position:static;
+        margin:20px;
+    }
+
+    .hero-text h1{
+        font-size:32px;
+    }
+
+    .section{
+        padding:40px 20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="back-button">← Back</a>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <img src="sedum_images/heather_bar/heather1.jpg" alt="Project Hero">
+
+    <div class="hero-text">
+        <h1>Saloon-Style Kitchen and Bar</h1>
+
+        <p>
+
+        </p>
+    </div>
+
+</section>
+
+<!-- OVERVIEW -->
+
+<section class="section">
+
+    <h2>Project Overview</h2>
+
+
+    <p>
+        This project involved fine carpentry and custom design work to fulfill ou clients dreams of an upscale saloon-style bar and kitchen.
+    </p>
+
+</section>
+
+
+
+<!-- PROGRESS -->
+
+<section class="section">
+
+    <h2>Progress Pics</h2>
+
+    <div class="thumb-grid">
+
+        <img src="sedum_images/heather_bar/plan.JPEG" onclick="openModal(this.src)">
+        
+        <img src="sedum_images/heather_bar/doorjig.JPEG" onclick="openModal(this.src)">
+        
+        <img src="sedum_images/heather_bar/dooor.JPEG" onclick="openModal(this.src)">
+        
+        <img src="sedum_images/heather_bar/cupboardprog.jpg" onclick="openModal(this.src)">
+        
+        <img src="sedum_images/heather_bar/backbarprog0.JPG" onclick="openModal(this.src)">
+        
+        <img src="sedum_images/heather_bar/backbar2.JPEG" onclick="openModal(this.src)">
+
+        
+    
+
+    </div>
+
+</section>
+
+<!-- AFTER -->
+
+<section class="section">
+
+    <h2>Finished Product</h2>
+
+    <p class="section-desc">
+        Ready for cowgirls and cocktails.
+    </p>
+
+    <div class="thumb-grid">
+
+        <img src="sedum_images/heather_bar/coffee.JPEG" onclick="openModal(this.src)">
+        
+        <img src="sedum_images/heather_bar/kitchen.JPEG" onclick="openModal(this.src)">
+        
+        <img src="sedum_images/heather_bar/sink.JPEG" onclick="openModal(this.src)">
+        
+        <img src="sedum_images/heather_bar/heather1.jpg" onclick="openModal(this.src)">
+        
+        <img src="sedum_images/heather_bar/heather3.jpg" onclick="openModal(this.src)">
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+    © Sedum Sustainable Design Solutions
+</div>
+
+<!-- MODAL -->
+
+<div id="imgModal" class="modal" onclick="closeModal()">
+    <img id="modalImg">
+</div>
+
+<script>
+function openModal(src){
+    const modal = document.getElementById("imgModal");
+    const img = document.getElementById("modalImg");
+
+    img.src = src;
+    modal.style.display = "flex";
+}
+
+function closeModal(){
+    document.getElementById("imgModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
