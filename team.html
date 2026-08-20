@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Keeps this utility page out of most search-engine indexes.
+         NOTE: this is not password protection. -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Team Resources</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --background: #E6E8E6;
+            --text: #2F2621;
+            --muted: #766D67;
+            --line: rgba(47, 38, 33, 0.18);
+            --card: rgba(255, 255, 255, 0.28);
+            --card-hover: rgba(255, 255, 255, 0.55);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--background);
+            color: var(--text);
+            font-family: "Inter", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .page {
+            width: min(1180px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        /* ---------- HEADER ---------- */
+
+        .site-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 32px;
+            padding: 34px 0 26px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .brand {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 0;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+        }
+
+        .brand-main {
+            font-size: clamp(2rem, 4vw, 3.7rem);
+            font-weight: 600;
+        }
+
+        .brand-sub {
+            margin-top: 8px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+        }
+
+        .back-link {
+            margin-top: 5px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid var(--text);
+            padding-bottom: 3px;
+            white-space: nowrap;
+        }
+
+        .back-link:hover {
+            opacity: 0.6;
+        }
+
+        /* ---------- INTRO ---------- */
+
+        main {
+            padding: 70px 0 90px;
+        }
+
+        .intro {
+            max-width: 760px;
+            margin-bottom: 58px;
+        }
+
+        .eyebrow {
+            margin: 0 0 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            line-height: 0.94;
+            letter-spacing: -0.055em;
+            font-weight: 500;
+        }
+
+        .intro p {
+            max-width: 580px;
+            margin: 24px 0 0;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* ---------- LINK SECTIONS ---------- */
+
+        .resource-section {
+            margin-top: 54px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .section-heading span {
+            color: var(--muted);
+            font-size: 0.76rem;
+        }
+
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .resource-link {
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 28px;
+            padding: 24px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            text-decoration: none;
+            transition:
+                transform 160ms ease,
+                background 160ms ease,
+                border-color 160ms ease;
+        }
+
+        .resource-link:hover {
+            transform: translateY(-3px);
+            background: var(--card-hover);
+            border-color: rgba(47, 38, 33, 0.35);
+        }
+
+        .resource-link:focus-visible {
+            outline: 2px solid var(--text);
+            outline-offset: 3px;
+        }
+
+        .resource-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .resource-title {
+            margin: 0;
+            font-size: clamp(1.2rem, 2vw, 1.55rem);
+            font-weight: 500;
+            letter-spacing: -0.025em;
+        }
+
+        .arrow {
+            flex: 0 0 auto;
+            font-size: 1.35rem;
+            line-height: 1;
+            transition: transform 160ms ease;
+        }
+
+        .resource-link:hover .arrow {
+            transform: translate(3px, -3px);
+        }
+
+        .resource-description {
+            max-width: 450px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 22px 0 34px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.74rem;
+        }
+
+        footer a {
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- MOBILE ---------- */
+
+        @media (max-width: 700px) {
+            .page {
+                width: min(100% - 28px, 1180px);
+            }
+
+            .site-header {
+                padding-top: 22px;
+            }
+
+            .brand-main {
+                font-size: 2.2rem;
+            }
+
+            .brand-sub {
+                font-size: 0.58rem;
+            }
+
+            main {
+                padding: 48px 0 70px;
+            }
+
+            .intro {
+                margin-bottom: 42px;
+            }
+
+            .intro p {
+                margin-top: 20px;
+            }
+
+            .link-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resource-link {
+                min-height: 135px;
+                padding: 20px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <header class="site-header">
+            <!-- Change "/" if your home page lives somewhere else -->
+            <a class="brand" href="/" aria-label="Sedum Solutions home">
+                <span class="brand-sub">Sedum Sustainable Design Solutions</span>
+            </a>
+
+            <a class="back-link" href="/">Main  site</a>
+        </header>
+
+        <main>
+            <section class="intro">
+                <h1>Team Resources</h1>
+            </section>
+
+            <!-- ============================================================
+                 DAILY TOOLS
+                 Replace YOUR_LINK_HERE with the actual URL for each resource.
+                 Delete any cards you do not need.
+                 ============================================================ -->
+            <section class="resource-section">
+
+                <div class="link-grid">
+                    <a class="resource-link"
+                       href="https://safe-colt-415.notion.site/3c2388d46659808eb021fdf9e33cd9c4?pvs=105"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <div class="resource-top">
+                            <h3 class="resource-title">Hours Log Input</h3>
+                            <span class="arrow" aria-hidden="true">↗</span>
+                        </div>
+                    </a>
+
+                    <a class="resource-link"
+                       href="YOUR_LINK_HERE"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <div class="resource-top">
+                            <h3 class="resource-title">Quoting Guidelines</h3>
+                            <span class="arrow" aria-hidden="true">↗</span>
+                        </div>
+                    </a>
+
+                    <a class="resource-link"
+                       href="YOUR_LINK_HERE"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <div class="resource-top">
+                            <h3 class="resource-title">Receipts & Expenses</h3>
+                            <span class="arrow" aria-hidden="true">↗</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+                </div>
+            </section>
+        </main>
+
+
+    </div>
+</body>
+</html>
