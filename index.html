@@ -315,6 +315,127 @@ nav a {
     line-height: 1.5;
 }
 
+
+/* PROJECT CATEGORY FILTERS */
+.project-intro {
+    max-width: 760px;
+    line-height: 1.6;
+    margin: -5px 0 24px;
+    color: #5f5a55;
+}
+.project-categories {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+    margin: 24px 0 34px;
+}
+.project-category {
+    position: relative;
+    min-height: 175px;
+    overflow: hidden;
+    border: 0;
+    border-radius: 8px;
+    padding: 0;
+    background: #2F2621;
+    cursor: pointer;
+    text-align: left;
+    isolation: isolate;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.project-category::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.02) 15%, rgba(0,0,0,0.72) 100%);
+    transition: background 0.25s ease;
+}
+.project-category img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+.project-category span {
+    position: absolute;
+    z-index: 1;
+    left: 16px;
+    bottom: 15px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.45);
+}
+.project-category:hover img,
+.project-category:focus-visible img {
+    transform: scale(1.06);
+}
+.project-category:hover,
+.project-category:focus-visible {
+    outline: 3px solid #6E7A4F;
+    outline-offset: 2px;
+}
+.project-category.active {
+    outline: 3px solid #6E7A4F;
+    outline-offset: 2px;
+}
+.project-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-top: 1px solid rgba(0,0,0,0.15);
+    padding-top: 24px;
+    margin-top: 8px;
+}
+.project-filter-bar h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+.project-filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.project-filter-label {
+    color: #6E7A4F;
+    font-size: 0.9rem;
+}
+.project-reset {
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 4px;
+    background: transparent;
+    color: #2F2621;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+.project-reset:hover {
+    background: rgba(255,255,255,0.7);
+}
+.proj-card[hidden] {
+    display: none !important;
+}
+@media (max-width: 1100px) {
+    .project-categories {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+@media (max-width: 600px) {
+    .project-categories {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+    .project-category {
+        min-height: 145px;
+    }
+    .project-filter-bar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
 /* FADE */
 .fade {
     opacity: 0;
@@ -697,13 +818,48 @@ function scrollToContact() {
     </div>
 </section>
 
-<section id = "projects"    class="section fade">
-    <h2>Some of our Recent Projects</h2>
+<section id="projects" class="section fade">
+    <h2>Recent Projects</h2>
+    <p class="project-intro">
+        Explore some of our recent work across outdoor and indoor spaces.
+        Choose a category to see projects in that area.
+    </p>
+
+    <div class="project-categories" aria-label="Filter projects by category">
+        <button class="project-category" type="button" data-filter="decking" aria-pressed="false">
+            <img src="sedum_images/micah/deck_done.JPEG" alt="" loading="lazy">
+            <span>Decking</span>
+        </button>
+        <button class="project-category" type="button" data-filter="roofing" aria-pressed="false">
+            <img src="sedum_images/steve_roof/done2.JPG" alt="" loading="lazy">
+            <span>Roofing</span>
+        </button>
+        <button class="project-category" type="button" data-filter="landscape" aria-pressed="false">
+            <img src="sedum_images/stone_path/finished1.jpeg" alt="" loading="lazy">
+            <span>Landscape</span>
+        </button>
+        <button class="project-category" type="button" data-filter="structures" aria-pressed="false">
+            <img src="sedum_images/cabin/cabin_1030.JPEG" alt="" loading="lazy">
+            <span>Structures</span>
+        </button>
+        <button class="project-category" type="button" data-filter="interior" aria-pressed="false">
+            <img src="sedum_images/gail/gail.JPEG" alt="" loading="lazy">
+            <span>Interior</span>
+        </button>
+    </div>
+
+    <div class="project-filter-bar">
+        <h3 id="project-list-heading">All Projects</h3>
+        <div class="project-filter-controls">
+            <span class="project-filter-label" id="project-count" aria-live="polite">15 projects</span>
+            <button class="project-reset" id="show-all-projects" type="button">Show all</button>
+        </div>
+    </div>
 
     <div class="projects">
 
-                        <!--Cabin-->
-        <div class="proj-card">
+        <!--Cabin-->
+        <div class="proj-card" data-category="structures">
             <a href="cabin_projectsheet.html">
                 <img src="sedum_images/cabin/cabin_1030.JPEG" alt="cabin project">
             </a>
@@ -718,7 +874,7 @@ function scrollToContact() {
         </div>
 
                 <!--gail-->
-        <div class="proj-card">
+        <div class="proj-card" data-category="interior">
             <a href="gail_projectsheet.html">
                 <img src="sedum_images/gail/gail.JPEG" alt="yard redo project">
             </a>
@@ -734,7 +890,7 @@ function scrollToContact() {
 
 
         <!--Micah-->
-        <div class="proj-card">
+        <div class="proj-card" data-category="decking">
             <a href="micah_projectsheet.html">
                 <img src="sedum_images/micah/deck_done.JPEG" alt="micah project">
             </a>
@@ -749,7 +905,7 @@ function scrollToContact() {
         </div>
 
         <!--Terry yard-->
-        <div class="proj-card">
+        <div class="proj-card" data-category="landscape">
             <a href="project_sheets/terry_yard_projectsheet.html">
                 <img src="sedum_images/terry_yard/tyard2.jpeg" alt="yard redo project">
             </a>
@@ -765,7 +921,7 @@ function scrollToContact() {
 
 
   
-        <div class="proj-card">
+        <div class="proj-card" data-category="landscape">
             <a href="project_sheets/stone_path_projectsheet.html">
                 <img src="sedum_images/stone_path/finished1.jpeg" alt="Stone path project">
             </a>
@@ -779,7 +935,7 @@ function scrollToContact() {
             </div>
         </div>
 
-        <div class="proj-card">
+        <div class="proj-card" data-category="decking">
             <a href="project_sheets/ambrose_bbq_projectsheet.html">
                 <img src="sedum_images/ambrose_bbq/fin (3).jpeg" alt="BBQ project">
             </a>
@@ -793,7 +949,7 @@ function scrollToContact() {
             </div>
         </div>
 
-        <div class="proj-card">
+        <div class="proj-card" data-category="roofing">
             <a href="project_sheets/leigh_window_projectsheet.html">
                 <img src="sedum_images/leigh_window/fin (3).jpeg" alt="Window project">
             </a>
@@ -807,7 +963,7 @@ function scrollToContact() {
             </div>
         </div>
 
-                <div class="proj-card">
+                <div class="proj-card" data-category="landscape">
             <a href="project_sheets/ambrose_landing_projectsheet.html">
                 <img src="sedum_images/ambrose_landing/fin (2).jpeg" alt="Landing project">
             </a>
@@ -822,7 +978,7 @@ function scrollToContact() {
         </div>
 
 
-          <div class="proj-card">
+          <div class="proj-card" data-category="structures">
             <a href="project_sheets/ambrose_slide_projectsheet.html">
                 <img src="sedum_images/ambrose_slide/fin (1).jpeg" alt="Water slide project">
             </a>
@@ -836,7 +992,7 @@ function scrollToContact() {
             </div>
         </div>
 
-        <div class="proj-card">
+        <div class="proj-card" data-category="roofing">
             <a href="steveroof_projectsheet.html">
                 <img src="sedum_images/nickatnight.JPEG" alt="Roof project">
             </a>
@@ -850,7 +1006,7 @@ function scrollToContact() {
             </div>
         </div>
 
-        <div class="proj-card">
+        <div class="proj-card" data-category="decking">
             <a href="Tom_backdeck_projectsheet.html">
                 <img src="sedum_images/back_deck.JPEG" alt="Back deck rebuild">
             </a>
@@ -864,7 +1020,7 @@ function scrollToContact() {
             </div>
         </div>
 
-        <div class="proj-card">
+        <div class="proj-card" data-category="decking">
             <a href="Tom_frontdeck_projectsheet.html">
                 <img src="sedum_images/front_deck.JPEG" alt="Front patio rebuild">
             </a>
@@ -878,7 +1034,7 @@ function scrollToContact() {
             </div>
         </div>
 
-        <div class="proj-card">
+        <div class="proj-card" data-category="decking">
             <a href="heatherfloor_projectsheet.html">
                 <img src="sedum_images/finished_1.JPEG" alt="Dance floor">
             </a>
@@ -894,7 +1050,7 @@ function scrollToContact() {
             </div>
         </div>
 
-        <div class="proj-card">
+        <div class="proj-card" data-category="interior">
             <a href="heatherbar_projectsheet.html">
                 <img src="sedum_images/heather1.jpg" alt="Kitchen and bar">
             </a>
@@ -972,6 +1128,51 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(fade);
     });
 
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const categoryButtons = document.querySelectorAll(".project-category[data-filter]");
+    const projectCards = document.querySelectorAll("#projects .proj-card");
+    const heading = document.getElementById("project-list-heading");
+    const count = document.getElementById("project-count");
+    const showAllButton = document.getElementById("show-all-projects");
+
+    const categoryNames = {
+        decking: "Decking",
+        roofing: "Roofing",
+        landscape: "Landscape",
+        structures: "Structures",
+        interior: "Interior"
+    };
+
+    function filterProjects(category) {
+        let visibleCount = 0;
+
+        projectCards.forEach(card => {
+            const show = !category || card.dataset.category === category;
+            card.hidden = !show;
+            if (show) visibleCount++;
+        });
+
+        categoryButtons.forEach(button => {
+            const active = button.dataset.filter === category;
+            button.classList.toggle("active", active);
+            button.setAttribute("aria-pressed", String(active));
+        });
+
+        heading.textContent = category ? categoryNames[category] + " Projects" : "All Projects";
+        count.textContent = visibleCount + (visibleCount === 1 ? " project" : " projects");
+    }
+
+    categoryButtons.forEach(button => {
+        button.addEventListener("click", () => filterProjects(button.dataset.filter));
+    });
+
+    showAllButton.addEventListener("click", () => filterProjects(null));
+    filterProjects("decking");
 });
 </script>
 
