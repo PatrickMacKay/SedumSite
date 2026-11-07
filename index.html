@@ -20,13 +20,12 @@ body {
     color: #2F2621;
 }
 
-/* --- LAYOUT --- */
+
 
 .container {
     display: flex;
 }
 
-/* --- SIDEBAR --- */
 
 .sidebar {
     width: 200px;
@@ -58,7 +57,6 @@ body {
     display: block;
 }
 
-/* --- NAV --- */
 
 .nav {
     margin-top: 40px;
@@ -100,14 +98,12 @@ nav a {
     color: #333;
 }
 
-/* --- MAIN --- */
 
 .main {
     margin-left: 200px;
     width: calc(100% - 200px);
 }
 
-/* --- HERO --- */
 .hero {
     position: relative;
     height: 75vh;
@@ -128,16 +124,17 @@ nav a {
     transform: scale(1.03);
 }
 
-/* gradient overlay for cohesion */
 .hero::after {
     content: "";
     position: absolute;
     inset: 0;
+    pointer-events: none;
 }
 
-/* HERO TEXT */
+
 .hero-text {
     position: absolute;
+    z-index: 2;
     bottom: 60px;
     left: 40px;
 
@@ -154,13 +151,32 @@ nav a {
     border-radius: 5px;
 }
 
-/* --- SECTIONS --- */
+.hero-text h1 {
+    font-size: clamp(24px, 3vw, 38px);
+    line-height: 1.15;
+    margin-bottom: 8px;
+}
+.hero-text p { margin-bottom: 14px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.hero-actions a {
+    display: inline-block;
+    padding: 9px 14px;
+    border: 1px solid #2F2621;
+    border-radius: 4px;
+    color: #2F2621;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+}
+.hero-actions a:hover { background: #2F2621; color: #fff; }
+
+
 
 .section {
     padding: 40px 40px;
 }
 
-/* --- ABOUT --- */
+
 
 .about {
     display: block;
@@ -213,20 +229,27 @@ nav a {
     font-weight: 600;
 }
 
-/* --- SERVICES --- */
+.service-discuss {
+    display: inline-block;
+    margin-top: 8px;
+    color: #2F2621;
+    text-decoration: none;
+    font-size: 13px;
+}
+.service-discuss:hover { text-decoration: underline; }
+
+
 
 .services h2 {
     margin-bottom: 40px;
 }
 
-/* GRID */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
-/* CARD */
 .service-card {
     background: rgba(255,255,255,0.5);
     padding: 20px;
@@ -235,7 +258,6 @@ nav a {
     transition: 0.25s ease;
 }
 
-/* IMAGE */
 .service-card img {
     width: 100%;
     height: 180px;
@@ -250,7 +272,6 @@ nav a {
         sepia(0.08);
 }
 
-/* TEXT */
 .service-card h3 {
     margin-bottom: 10px;
 }
@@ -260,7 +281,6 @@ nav a {
     line-height: 1.5;
 }
 
-/* HOVER */
 .service-card:hover {
     transform: translateY(-6px);
     background: rgba(255,255,255,0.75);
@@ -271,7 +291,6 @@ nav a {
     --muted: #666;
 }
 
-/* RECENT PROJECTS */
 .projects {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -316,7 +335,6 @@ nav a {
 }
 
 
-/* PROJECT CATEGORY FILTERS */
 .project-intro {
     max-width: 760px;
     line-height: 1.6;
@@ -436,7 +454,7 @@ nav a {
     }
 }
 
-/* FADE */
+
 .fade {
     opacity: 0;
     transform: translateY(10px);
@@ -457,14 +475,14 @@ nav a {
 }
 
 
-/* SURVEY SECTION */
+
 .survey {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* BOX */
+
 .survey-box {
     text-align: center;
     max-width: 100%;
@@ -476,13 +494,12 @@ nav a {
     border-left: 4px solid #6E7A4F;
 }
 
-/* TEXT */
+
 .survey-box p {
     margin: 20px 0;
     line-height: 1.6;
 }
 
-/* BUTTON */
 .survey-button {
     display: inline-block;
     padding: 12px 24px;
@@ -505,10 +522,31 @@ nav a {
 .survey-box:hover {
     transform: translateY(-3px);
 }
-/* --- CONTACT --- */
 
 .contact {
     margin-top: 60px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 28px;
+    align-items: stretch;
+}
+
+.contact-panel {
+    background: rgba(255,255,255,0.48);
+    padding: 24px;
+    border-radius: 8px;
+}
+
+.contact-details {
+    line-height: 1.8;
+    color: #5f5a55;
+}
+
+.contact-details strong {
+    color: #2F2621;
 }
 
 form {
@@ -521,7 +559,14 @@ input, textarea {
     margin-bottom: 15px;
     padding: 12px;
     border: 1px solid rgba(0,0,0,0.2);
-    background: transparent;
+    background: rgba(255,255,255,0.55);
+    border-radius: 4px;
+    font: inherit;
+}
+
+textarea {
+    min-height: 140px;
+    resize: vertical;
 }
 
 button {
@@ -536,7 +581,6 @@ button:hover {
     background: #6E7A4F;
 }
 
-/* --- BANNER SECTION --- */
 .banner-section {
     text-align: center;
     background: rgba(255,255,255,0.3);
@@ -550,7 +594,6 @@ button:hover {
     display: block;
 }
 
-/* HAMBURGER (hidden on desktop) */
 .hamburger {
     display: none;
     font-size: 28px;
@@ -560,7 +603,6 @@ button:hover {
 
 @media (max-width: 900px) {
 
-    /* Hide sidebar container visually */
     html{
         scroll-padding-top: 80px;
     }
@@ -583,19 +625,16 @@ button:hover {
         gap: 8px;
     }
 
-    /* Hide nav completely */
     .nav {
         display: none;
     }
 
 
-    /* Fix main layout */
     .main {
         margin-left: 0;
         width: 100%;
     }
 
-    /* HERO TEXT BELOW IMAGE */
     .hero {
         height: auto;
     }
@@ -615,7 +654,6 @@ button:hover {
         justify-self: center;
     }
     
-    /* GRID */
     .services-grid {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -637,17 +675,19 @@ function toggleMenu() {
 }
 </script>
 <script>
-function scrollToContact() {
-    document.getElementById("contact").scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
+function scrollToSection(sectionId) {
+    const target = document.getElementById(sectionId);
+    if (target) {
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
 }
 </script>
 <body>
     <header class="navbar">
     <div class="container">
-        <!-- Logo on the left -->
 
         <div class="logo">
             SEDUM
@@ -655,7 +695,6 @@ function scrollToContact() {
             <span class="logo2">SOLUTIONS</span>
         </div>
 
-        <!-- Navigation links -->
         <nav>
             <a href="#hero">Mission</a>
             <a href="#about">About</a>
@@ -667,7 +706,7 @@ function scrollToContact() {
 
 <div class="container">
 
-<!-- SIDEBAR -->
+
 <div class="sidebar">
     <div class="logo">
         SEDUM
@@ -684,17 +723,26 @@ function scrollToContact() {
     </div>
 </div>
 
-
-<!-- MAIN -->
 <div class="main">
 
-    <!-- HERO -->
+
     <section id="hero" class="hero">
     <img src="sedum_images/hero_image.JPG" alt="">
 
 
     <div class="hero-text">
-        Bridging the gap between quality, affordability, and sustainability on each and every project.
+        <h1>Let's Build Something Better.</h1>
+        <p>Bridging the gap between quality, affordability, and sustainability on each and every project.</p>
+        <div class="hero-actions">
+        <a href="#contact"
+        onclick="scrollToSection('contact'); return false;"
+        style="display:inline-block; background-color:#6E7A4F; color:#fff; border:1px solid #6E7A4F; padding:9px 14px; border-radius:4px; text-decoration:none; font-size:14px; transition:background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;"
+        onmouseover="this.style.backgroundColor='#56613D'; this.style.borderColor='#56613D'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.15)'"
+        onmouseout="this.style.backgroundColor='#6E7A4F'; this.style.borderColor='#6E7A4F'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+        Request a Project Quote
+        </a>
+    <a href="#projects" onclick="scrollToSection('projects'); return false;">Explore Our Work</a>
+        </div>
     </div>
 <!--    <div class="hero-text">
         Housing is a fundamental human right. 
@@ -706,56 +754,7 @@ function scrollToContact() {
     </div> -->
 </section>
 
-    <!-- ABOUT -->
-    <section id = "about" class="section about">
-        <div class="about-intro">
-            <h2>About Us</h2>
 
-            <p>
-                Hello, we're Sedum! We came to Nova Scotia for university in 2018, 
-                and fell in love with this beautiful province. We have a long history of building, 
-                from systems to saloons. We feel that the cross section of our expertise in engineering 
-                and management, as well as our extensive joint experience in restorative forestry, 
-                allows us to bring a fresh perspective to inspiring and innovative projects. 
-            </p>
-        </div>
-
-        <div class="about-person">
-            <img src="sedum_images/jad_pic.JPEG" alt="Jad">
-            <div>
-                <p>
-                    <strong>Jad (he/him)</strong> holds a bachelor's degree in entrepreneurial management, 
-                    and has spent several years honing his skills in the roles of operations management and 
-                    event coordination. He is a true handyman, and can be located if you follow the sound of 
-                    puttering and handtools. 
-                </p>
-            </div>
-        </div>
-
-        <div class="about-person">
-            <img src="sedum_images/patty_pic.JPEG" alt="Patrick">
-            <div>
-                <p>
-                    <strong>Patrick (he/him)</strong> holds a bachelor's degree in electrical engineering, 
-                    with a focus on robotics and power distribution. He has spent several years developing 
-                    a wide knowledge base for designing and building just about anything. He can often be 
-                    found biking around town, or surfing at (REDACTED).
-                </p>
-            </div>
-        </div>
-        
-                <div class="about-person">
-            <img src="sedum_images/nickshot.png" alt="Nick">
-            <div>
-                <p>
-                    <strong>Nick (he/him)</strong> holds a bachelor's degree in computer science (with a minor in bass guitar), and once sent a satellite to 
-                    space. Over the years he has earned a jack-of-all-trades reputation. He mans the groove department of Customer Service and Bill Ricky.
-                    He can often be found playing beautiful music for beautiful people.
-                </p>
-            </div>
-        </div>
-
-    </section>
 
 <section id = "services" class="section services">
 
@@ -772,47 +771,53 @@ function scrollToContact() {
 
     <div class="services-grid">
 
-        <div class="service-card" onclick="scrollToContact()">
+        <div class="service-card" onclick="scrollToSection('contact')">
                 <h3>Custom Builds</h3>
                 <p>
                     Affordable project based design and development.
                 </p>
+            <a href="#contact" class="service-discuss">Discuss your project →</a>
         </div>
 
-        <div class="service-card" onclick="scrollToContact()">
+        <div class="service-card" onclick="scrollToSection('contact')">
             <h3>Renovations</h3>
             <p>
                 Bespoke restoration and home improvement.
             </p>
+            <a href="#contact" class="service-discuss">Discuss your project →</a>
         </div>
 
 
 
-        <div class="service-card" onclick="scrollToContact()">
+        <div class="service-card" onclick="scrollToSection('contact')">
             <h3>Landscaping</h3>
             <p>
                 Design and implementation of sustainable landscape solutions.
             </p>
+            <a href="#contact" class="service-discuss">Discuss your project →</a>
         </div>
-        <div class="service-card" onclick="scrollToContact()">
+        <div class="service-card" onclick="scrollToSection('contact')">
             <h3>Guidance</h3>
             <p>
                 Permitting and design consultation.
             </p>
+            <a href="#contact" class="service-discuss">Discuss your project →</a>
         </div>
-        <div class="service-card" onclick="scrollToContact()">
+        <div class="service-card" onclick="scrollToSection('contact')">
             <h3>Community</h3>
             <p>
                 Connecting homeowners to resources and local experts.
             </p>
+            <a href="#contact" class="service-discuss">Discuss your project →</a>
         </div>
 
         
-        <div class="service-card" onclick="scrollToContact()">
+        <div class="service-card" onclick="scrollToSection('contact')">
             <h3>And More!</h3>
             <p>
                 No problem too big, no job too small!
             </p>
+            <a href="#contact" class="service-discuss">Discuss your project →</a>
         </div>
 
     </div>
@@ -858,7 +863,6 @@ function scrollToContact() {
 
     <div class="projects">
 
-        <!--Cabin-->
         <div class="proj-card" data-category="structures">
             <a href="cabin_projectsheet.html">
                 <img src="sedum_images/cabin/cabin_1030.JPEG" alt="cabin project">
@@ -873,7 +877,6 @@ function scrollToContact() {
             </div>
         </div>
 
-                <!--gail-->
         <div class="proj-card" data-category="interior">
             <a href="gail_projectsheet.html">
                 <img src="sedum_images/gail/gail.JPEG" alt="yard redo project">
@@ -889,7 +892,6 @@ function scrollToContact() {
         </div>
 
 
-        <!--Micah-->
         <div class="proj-card" data-category="decking">
             <a href="micah_projectsheet.html">
                 <img src="sedum_images/micah/deck_done.JPEG" alt="micah project">
@@ -904,7 +906,6 @@ function scrollToContact() {
             </div>
         </div>
 
-        <!--Terry yard-->
         <div class="proj-card" data-category="landscape">
             <a href="project_sheets/terry_yard_projectsheet.html">
                 <img src="sedum_images/terry_yard/tyard2.jpeg" alt="yard redo project">
@@ -1068,6 +1069,56 @@ function scrollToContact() {
     </div>
 </section>
 
+    <section id = "about" class="section about">
+        <div class="about-intro">
+            <h2>About Us</h2>
+
+            <p>
+                Hello, we're Sedum! We came to Nova Scotia for university in 2018, 
+                and fell in love with this beautiful province. We have a long history of building, 
+                from systems to saloons. We feel that the cross section of our expertise in engineering 
+                and management, as well as our extensive joint experience in restorative forestry, 
+                allows us to bring a fresh perspective to inspiring and innovative projects. 
+            </p>
+        </div>
+
+        <div class="about-person">
+            <img src="sedum_images/jad_pic.JPEG" alt="Jad">
+            <div>
+                <p>
+                    <strong>Jad (he/him)</strong> holds a bachelor's degree in entrepreneurial management, 
+                    and has spent several years honing his skills in the roles of operations management and 
+                    event coordination. He is a true handyman, and can be located if you follow the sound of 
+                    puttering and handtools. 
+                </p>
+            </div>
+        </div>
+
+        <div class="about-person">
+            <img src="sedum_images/patty_pic.JPEG" alt="Patrick">
+            <div>
+                <p>
+                    <strong>Patrick (he/him)</strong> holds a bachelor's degree in electrical engineering, 
+                    with a focus on robotics and power distribution. He has spent several years developing 
+                    a wide knowledge base for designing and building just about anything. He can often be 
+                    found biking around town, or surfing at (REDACTED).
+                </p>
+            </div>
+        </div>
+        
+                <div class="about-person">
+            <img src="sedum_images/nickshot.png" alt="Nick">
+            <div>
+                <p>
+                    <strong>Nick (he/him)</strong> holds a bachelor's degree in computer science (with a minor in bass guitar), and once sent a satellite to 
+                    space. Over the years he has earned a jack-of-all-trades reputation. He mans the groove department of Customer Service and Bill Ricky.
+                    He can often be found playing beautiful music for beautiful people.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
 <section class="section survey">
 
     <div class="survey-box">
@@ -1085,19 +1136,31 @@ function scrollToContact() {
 
 </section>
 
-<section id="contact" class="section">
+<section id="contact" class="section contact">
         <h2>Send us a message!</h2>
 
-        <form action="https://formsubmit.co/info@sedumsolutions.ca" method="POST">
-            <input type="hidden" name="_subject" value="New message from sedum solutions">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://sedumsolutions.ca">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
+        <div class="contact-grid">
+            <div class="contact-panel">
+                <form action="https://formsubmit.co/info@sedumsolutions.ca" method="POST">
+                    <input type="hidden" name="_subject" value="New message from sedum solutions">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://sedumsolutions.ca">
+                    <input type="text" name="name" placeholder="Your Name" autocomplete="name" required>
+                    <input type="email" name="email" placeholder="Your Email" autocomplete="email" required>
+                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
 
-            <button type="submit">Send</button>
-        </form>
+            <div class="contact-panel contact-details">
+                <h3>Let's talk about what's possible.</h3>
+                <p>Share whatever details you have so far. You don't need to have every decision figured out before reaching out.</p>
+                <br>
+                <p><strong>Serving:</strong><br>Halifax Regional Municipality and surrounding communities.</p>
+                <br>
+                <p><strong>What happens next?</strong><br>We'll review your message and follow up to learn more about the project and discuss next steps.</p>
+            </div>
+        </div>
     </section>
 
 <section class="section banner-section">
